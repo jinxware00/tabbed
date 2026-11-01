@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview</title>
+    <link rel="stylesheet" href="css/reference.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layouts.css" />
+    <link rel="stylesheet" href="css/reference-bindings.css" />
+  </head>
+  <body>
+    <div id="profile-root"></div>
+
+    <script src="js/icons.js"></script>
+    <script src="js/reference-icons.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/cat.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/layout-loader.js"></script>
+    <script src="js/sections.js"></script><script src="js/reference.js"></script>
+    <script src="js/profile.js"></script>
+    <script>
+      (function () {
+        var Handle = null;
+        var LastConfig = null;
+        function Send(Type) {
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage({ source: "aboutu-preview", type: Type }, "*");
+          }
+        }
+        var generation = 0;
+        window.addEventListener("message", async function (Event) {
+          var Data = Event.data;
+          if (Event.source !== window.parent || Event.origin !== location.origin || !Data || Data.source !== "aboutu-editor") return;
+          if (!['preview-pause','preview-replay','preview-config'].includes(Data.type)) return;
+          var turn = ++generation;
+          if (Data.type === 'preview-pause') {
+            if (Handle) { Handle.Destroy(); Handle = null; }
+            LastConfig = null;
+            return;
+          }
+          try {
+            LastConfig = Data.config || LastConfig;
+            if (!LastConfig) return;
+            await LayoutLoader.Load(LastConfig.Layout.Preset);
+            if (turn !== generation) return;
+            if (Data.type === 'preview-replay' && Handle) { Handle.Destroy(); Handle = null; }
+            if (!Handle) Handle = ProfileRuntime.Mount(document.getElementById('profile-root'), LastConfig, { Preview:true, Embed:!!Data.embed, SkipEntry:Data.type !== 'preview-replay' && !!Data.skipEntry });
+            else Handle.Update(LastConfig);
+            Send('preview-updated');
+          } catch (error) { if (turn === generation) { Send('preview-error'); console.error(error); } }
+        });
+        Send("preview-ready");
+      })();
+    </script>
+  </body>
+</html>

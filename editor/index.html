@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a"><title>Tabbed | Customize</title>
+  <link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="editor.css"><link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="media-search.css"></head>
+<body>
+  <aside class="dashboard-sidebar" id="sidebar">
+    <a class="brand" href="#customize" aria-label="Tabbed home"><img src="../assets/favicon.svg" alt=""><strong>Tabbed</strong><span class="local-label">local</span></a>
+    <button class="search-button" id="btn-search"><span data-icon="search"></span><span>Search features...</span><kbd>Ctrl K</kbd></button>
+    <nav id="editor-nav" aria-label="Dashboard"></nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-help"><p>Make this space yours.</p><button class="sidebar-button" data-page="templates"><span data-icon="templates"></span>Explore templates</button><p>Check out your page</p><a class="sidebar-button purple" id="my-page" href="../profile.html" target="_blank" rel="noopener"><span data-icon="external"></span>My Page</a></div>
+      <button class="share-button" id="btn-share"><span data-icon="share"></span>Share Your Profile</button>
+      <button class="account-chip" data-page="account"><img id="account-avatar" src="../assets/web/avatar.webp" alt=""><span><strong id="account-name">Your profile</strong><small>Local workspace</small></span><span data-icon="more"></span></button>
+    </div>
+  </aside>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+  <main class="dashboard-main">
+    <header class="dashboard-header">
+      <div class="breadcrumb"><button id="btn-menu" class="icon-btn" aria-label="Open navigation" aria-expanded="false"><span data-icon="menu"></span></button><span>Dashboard</span><span class="breadcrumb-slash">/</span><strong id="page-name">Customize</strong></div>
+      <div class="header-actions"><span class="save-status" id="save-status" role="status">Saved locally</span><button id="btn-preview" class="ghost"><span data-icon="eye"></span>Preview</button><button id="btn-export-zip" class="primary"><span data-icon="download"></span>Export site</button></div>
+    </header>
+    <div id="forms-panel" class="dashboard-content" aria-label="Configuration"></div>
+    <footer class="dashboard-footer"><span>Your profile. Your space.</span><span>Tabbed <span class="footer-dot">·</span> local dashboard</span></footer>
+  </main>
+  <dialog id="preview-dialog" aria-labelledby="preview-title">
+    <div class="preview-heading"><div><h2 id="preview-title">Your profile, live.</h2><p>Changes appear as you edit.</p></div><button id="btn-close-preview" class="icon-btn" aria-label="Close preview">×</button></div>
+    <section class="panel preview" aria-label="Live preview">
+      <div class="preview-toolbar"><div class="seg" role="group" aria-label="Preview width"><button class="seg-btn active" data-width="desktop">Desktop</button><button class="seg-btn" data-width="mobile">Mobile</button></div><span class="live-pill"><span class="live-dot"></span>Live</span><label class="mini"><input type="checkbox" id="chk-noentry" checked>Skip entry</label><label class="mini"><input type="checkbox" id="chk-embed">Embed</label><button id="btn-replay" class="ghost small">Replay entry</button></div>
+      <div class="preview-stage" id="preview-stage"><iframe id="preview-frame" src="../preview.html?noentry=1" title="Profile preview" sandbox="allow-scripts allow-same-origin allow-pointer-lock"></iframe></div>
+    </section>
+  </dialog>
+  <div hidden><select id="preset-select"><option value="">Custom</option><option value="nova">nova</option><option value="crimson">crimson</option><option value="cyber">cyber</option><option value="sunset">sunset</option><option value="minimal">minimal</option></select><button id="btn-load-json">Import</button><button id="btn-save-json">Export JSON</button><button id="btn-reset">Reset</button></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div><input type="file" id="json-file" accept="application/json,.json" hidden>
+  <script src="../js/icons.js"></script><script src="../js/reference-icons.js"></script><script src="../js/services.js"></script><script src="../js/profile.js"></script><script src="../js/legacy-drafts.js"></script><script src="../js/themes.js"></script><script src="../js/config.js"></script><script src="../js/media-store.js"></script><script src="zip.js"></script><script src="sources.js"></script><script src="export.js"></script><script src="editor.js"></script><script src="media-search.js"></script><script src="dashboard.js"></script>
+</body></html>

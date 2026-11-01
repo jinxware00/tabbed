@@ -1,0 +1,71 @@
+/* Bind the copied profile markup to editor values without replacing its layout. */
+:where(.pf-reference .ref-theme *){box-sizing:content-box}
+.pf-reference{font-family:var(--pf-font-family,Satoshi,sans-serif);color:var(--pf-text)}
+.pf-reference .ref-scroll{display:block;padding:0;overflow-x:hidden;overflow-y:auto}
+.pf-reference .ref-paged{scroll-snap-type:none;overscroll-behavior-y:contain}
+.pf-reference .ref-paged:focus{outline:none}
+.pf-reference [data-profile-section]{scroll-snap-align:none}
+.pf-reference [data-profile-role=section-nav] [role=button]{pointer-events:auto;position:relative}
+.pf-reference [data-profile-role=section-nav] [role=button]::before{content:'';position:absolute;inset:-6px}
+.pf-reference .ref-portfolio-avatar{margin:0 auto 24px;flex:none;width:var(--pf-avatar-size,118px);height:var(--pf-avatar-size,118px)}
+.pf-reference .ref-portfolio-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:2px solid color-mix(in srgb,var(--iconColor) 45%,transparent)}
+.pf-reference .pf-tilt-enabled{transform-style:preserve-3d;transition:transform 350ms cubic-bezier(.2,.75,.2,1);will-change:transform}
+.pf-reference .pf-tilt-enabled [data-profile-role=avatar]{transform:translateZ(28px)}
+.pf-reference [data-profile-role=badge],.pf-reference [data-profile-role=links] a{transition:scale 180ms ease,filter 180ms ease}
+.pf-reference [data-profile-role=badge]:hover,.pf-reference [data-profile-role=links] a:hover{scale:1.12}
+.pf-reference [data-reveal-part=project-card-item]{transition:scale 220ms ease,box-shadow 220ms ease}
+.pf-reference [data-reveal-part=project-card-item]:hover{scale:1.025;box-shadow:0 14px 42px #0006}
+.pf-reference .ref-theme{min-height:100%;font-family:inherit}
+.pf-reference .ref-theme *{font-family:var(--pf-font-family,Satoshi,sans-serif)!important}
+.pf-reference [hidden]{display:none!important}
+.pf-reference .ref-name{margin:0;text-align:inherit;line-height:1.3;font-weight:700;color:var(--textColor)}
+.pf-reference .ref-name .pf-name-text{font-family:inherit;display:inline-block}
+.pf-reference .ref-bio,.pf-reference .ref-status,.pf-reference .ref-username{font:450 16px/1.5 var(--pf-font-family);color:var(--textColor);white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0}
+.pf-reference .ref-username{font-size:13px;opacity:.7}
+.pf-reference [data-profile-role=links]{gap:18px;flex-wrap:wrap}
+.pf-reference [data-profile-role=links] a{text-decoration:none}
+.pf-reference .ref-link-boxed{padding:9px;border:1px solid currentColor;border-radius:10px}
+.pf-reference [data-profile-role=badge] svg,.pf-reference [data-profile-role=badge] img{width:var(--userBadge);height:var(--userBadge);object-fit:contain}
+.pf-reference [data-profile-role=badge]:focus-visible,.pf-reference [role=button]:focus-visible,.pf-reference a:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.pf-reference .ref-entry{display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:rgba(0,0,0,var(--pf-entry-dim));backdrop-filter:blur(var(--pf-entry-blur));border:0}
+.pf-reference .ref-entry.pf-entry-hidden{opacity:0;pointer-events:none}
+.pf-reference .ref-tv-overlay{pointer-events:none;z-index:1}
+.pf-reference .ref-presence-dot{position:absolute;right:0;bottom:0;width:15px;height:15px;border:3px solid #111;border-radius:50%;background:#23a55a}
+.pf-reference .ref-state-dnd{background:#f23f43}.pf-reference .ref-state-idle{background:#f0b232}.pf-reference .ref-state-offline{background:#80848e}
+.pf-reference [role=button]{cursor:pointer}.pf-reference [data-lyrics-line]{cursor:pointer}
+.pf-reference .ref-lyric-active{opacity:1!important;color:var(--textColor)!important;font-weight:700!important}
+.pf-reference [data-profile-role=music] [role=slider]{touch-action:none}
+@media(prefers-reduced-motion:reduce){.pf-reference *, .pf-reference *:before,.pf-reference *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Every profile layout shares the same paged sections and navigation. */
+.pf-reference .ref-paged{scroll-behavior:auto;overflow-y:auto;scrollbar-width:none}
+.pf-reference .ref-paged::-webkit-scrollbar{display:none}
+.pf-reference .ref-deck{min-height:100%;position:relative}
+.pf-reference .ref-page{box-sizing:border-box;min-height:100svh;height:100svh;width:100%;max-width:none;margin:0;padding:48px 56px;display:flex;align-items:center;justify-content:center;position:relative}
+.pf-reference .ref-profile-page{padding:32px 56px}
+.pf-reference .ref-profile-content{box-sizing:border-box;width:100%;max-height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;display:flex;flex-direction:column;align-items:center;padding:24px 0}
+.pf-reference .ref-profile-content>*{flex-shrink:0;max-width:100%}
+.pf-reference .ref-profile-page [class*="tb-19-00d4b0cd"]{min-height:0;padding-top:0;padding-bottom:0}
+.pf-reference .ref-profile-page [class*="tb-75-0fd8ed4e"]:empty{display:none}
+.pf-reference .ref-profile-content>[class*="tb-07-9f3b6c9b"]{width:min(100%,1024px)}
+.pf-reference .ref-page-body{box-sizing:border-box;width:min(100%,850px);max-height:100%;overflow-y:auto;overscroll-behavior:contain;padding:24px;scrollbar-width:thin;border-radius:24px}
+.pf-reference .ref-page-body:focus{outline:none}
+.pf-reference .ref-section-title{font-size:clamp(28px,4vw,42px);letter-spacing:-1.2px;line-height:1.2;margin:0 0 28px;color:var(--textColor)}
+.pf-reference .ref-about-text{font-size:clamp(16px,2vw,20px);line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;margin:18px 0;color:var(--textColorDarker)}
+.pf-reference .ref-interest-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.pf-reference .ref-interest-tags span{padding:10px 16px;border:1px solid color-mix(in srgb,var(--iconColor) 25%,transparent);background:color-mix(in srgb,var(--iconColor) 9%,transparent);border-radius:30px;font-size:14px}
+.pf-reference .ref-shared-widgets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%}
+.pf-reference .ref-widget-item{box-sizing:border-box;width:100%;min-width:0;margin:0;align-self:stretch;border-radius:20px}
+.pf-reference .ref-widget-item:last-child:nth-child(odd){grid-column:1/-1}
+.pf-reference .ref-widget-item [class*="tb-ff-068e59b5"],.pf-reference .ref-widget-item [class*="tb-97-571fc87f"]{width:auto;min-width:0}
+.pf-reference .ref-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.pf-reference .ref-project-card{display:block;border:1px solid color-mix(in srgb,var(--iconColor) 18%,transparent);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--textColor);background:var(--secondTabBackground)}
+.pf-reference .ref-project-card img{display:block;width:100%;height:180px;object-fit:cover}
+.pf-reference .ref-project-card h3{font-size:20px;margin:20px 20px 8px}.pf-reference .ref-project-card p{margin:0 20px 24px;line-height:1.7;color:var(--textColorDarker);overflow-wrap:anywhere}
+.pf-reference .ref-quote{margin:0;text-align:center}.pf-reference .ref-quote p{font-size:clamp(24px,4vw,42px);line-height:1.55}.pf-reference .ref-quote cite{display:block;margin-top:24px;color:var(--textColorDarker)}
+.pf-reference .ref-section-nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:15;display:flex;flex-direction:column;gap:10px;padding:10px 6px;border-radius:24px;background:#0003;backdrop-filter:blur(10px)}
+.pf-reference .ref-section-dot{box-sizing:border-box;position:relative;display:block;width:10px;height:10px;min-height:0;padding:0;margin:0;border:1px solid #fff7;border-radius:50%;background:#ffffff40;cursor:pointer;transition:height .4s ease,background .4s ease,border-radius .4s ease}
+.pf-reference .ref-section-dot[aria-current=true]{height:28px;border-radius:10px;background:var(--pf-accent);border-color:var(--pf-accent)}
+.pf-reference .ref-section-dot:before{content:'';position:absolute;inset:-5px -8px}
+.pf-entry{color:var(--pf-text);opacity:1}.pf-entry-text{font-weight:600;letter-spacing:.08em}.pf-entry-subtitle{font-size:13px;letter-spacing:.04em;opacity:.7;text-align:center;max-width:300px;line-height:1.6}.pf-entry-icon{width:64px;height:64px;object-fit:contain}.pf-entry-inner{padding:24px}
+@media(max-width:700px){.pf-reference .ref-page{padding:28px 32px 28px 16px}.pf-reference .ref-page-body{padding:16px 8px}.pf-reference .ref-profile-page{padding:20px 30px 20px 14px}.pf-reference .ref-section-nav{right:8px}.pf-reference .ref-shared-widgets,.pf-reference .ref-project-grid{grid-template-columns:1fr}.pf-reference .ref-widget-item{max-width:100%}.pf-reference .ref-profile-page [class*="tb-6b-6c9a4d69"]{max-width:100%}}

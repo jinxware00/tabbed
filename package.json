@@ -1,0 +1,15 @@
+{
+  "name": "tabbed",
+  "version": "2.0.0",
+  "private": true,
+  "description": "A local profile dashboard and self-hostable profile builder",
+  "scripts": {
+    "dev": "node tools/serve.cjs",
+    "build": "node tools/build-sources.js",
+    "pretest": "node tools/build-sources.js",
+    "test": "node tests/dashboard.cjs && node tests/motion.cjs && node tests/media.cjs && node tests/templates.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}

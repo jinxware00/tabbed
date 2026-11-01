@@ -1,0 +1,3 @@
+# Browser checks
+
+Run `npm test`. The dashboard suite extracts and serves all six ZIP exports and checks identity, uploads, links, badges, mobile layouts, and preview controls. Motion checks cover smooth section paging, reveals, tilt, cursor particles, and reduced motion. Template checks cover partial copying, entry screens, the three layout choices, asset icons, badges under Links, wheel momentum, keyboard and touch navigation, and resizing. Media checks mock Commons to verify search, pagination, attribution, previews, cancellation, failures, file persistence, and migration. The suite starts isolated local servers and writes screenshots and export fixtures to `.test-artifacts/`.

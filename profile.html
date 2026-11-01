@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>My profile</title><link rel="stylesheet" href="css/reference.css"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/layouts.css"><link rel="stylesheet" href="css/reference-bindings.css"></head>
+<body><div id="profile-root"></div>
+<script src="js/icons.js"></script><script src="js/reference-icons.js"></script><script src="js/services.js"></script><script src="js/cursor.js"></script><script src="js/cat.js"></script><script src="js/motion.js"></script><script src="js/layout-loader.js"></script><script src="js/sections.js"></script><script src="js/reference.js"></script><script src="js/profile.js"></script><script src="js/legacy-drafts.js"></script><script src="js/themes.js"></script><script src="js/config.js"></script><script src="js/media-store.js"></script>
+<script>
+  (async function () {
+    var template = new URLSearchParams(location.search).get('template');
+    template = TemplateAliases[template] || template;
+    var selected = PROFILE_TEMPLATES.find(function (item) { return item.id === template; });
+    var draft = await ProfileStore.load().catch(function () { return null; });
+    var current = draft || window.PROFILE_CONFIG;
+    window.PROFILE_CONFIG = selected ? TemplateIdentity(selected, current) : current;
+    await LayoutLoader.Load(PROFILE_CONFIG.Layout.Preset);
+    ProfileRuntime.AutoMount();
+  })().catch(function (error) { document.getElementById('profile-root').textContent = 'This profile could not load. Please refresh.'; console.error(error); });
+</script></body></html>
